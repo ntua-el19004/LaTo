@@ -66,6 +66,15 @@ button {
     margin: 0 auto;
 }
 
+.engolpio-image {
+    width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 15px;
+}
+
 .logo {
     display: grid;
     place-items: center;

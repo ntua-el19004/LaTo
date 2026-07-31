@@ -227,8 +227,11 @@ function renderEngolpia() {
 
         card.innerHTML = `
             <div class="engolpio-cover" aria-hidden="true">
-                📖
-            </div>
+                <img
+            src="${engolpio.image || 'images/default.jpg'}"
+            class="engolpio-image"
+            alt="${engolpio.title}">
+                </div>
 
             <div class="engolpio-content">
                 <p class="engolpio-number">
