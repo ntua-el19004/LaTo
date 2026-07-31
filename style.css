@@ -169,20 +169,16 @@ button {
 
 .card-image {
     width: 100%;
-    height: 263px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 260px;
     overflow: hidden;
-    background: linear-gradient(135deg, #941c1c, #bd3029);
+    background: #b52620;
 }
 
 .engolpio-image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
-    background: white;
 }
 
 .engolpio-placeholder {
