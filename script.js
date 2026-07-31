@@ -228,9 +228,9 @@ function renderEngolpia() {
         card.innerHTML = `
             <div class="engolpio-cover" aria-hidden="true">
                 <img
-            src="${engolpio.image || 'images/default.jpg'}"
+            src="${item.image || 'images/default.jpg'}"
             class="engolpio-image"
-            alt="${engolpio.title}">
+            alt="${item.title}">
                 </div>
 
             <div class="engolpio-content">
