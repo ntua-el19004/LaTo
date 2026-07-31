@@ -67,7 +67,7 @@ async function loadEngolpia() {
     console.log("Starting loadEngolpia...");
     console.log("API URL:", API_URL);
 
-    resultsText.textContent = "Loading engolpia...";
+    resultsText.textContent = "Φόρτωση εγκολπίων...";
     grid.innerHTML = "";
 
     try {
@@ -117,11 +117,11 @@ async function loadEngolpia() {
         console.error("Load error:", error);
 
         resultsText.textContent =
-            "The engolpia could not be loaded.";
+            "Τα εγκόλπια δεν ήταν δυνατό να φορτωθούν.";
 
         grid.innerHTML = `
             <div class="load-error">
-                <h2>Loading failed</h2>
+                <h2>Αποτυχία φόρτωσης</h2>
                 <p>${escapeHtml(error.message)}</p>
 
                 <button
@@ -129,7 +129,7 @@ async function loadEngolpia() {
                     class="primary-button retry-button"
                     id="retryButton"
                 >
-                    Try again
+                    Δοκιμάστε ξανά
                 </button>
             </div>
         `;
@@ -153,7 +153,7 @@ function normalizeBoolean(value) {
  */
 function populateCategories() {
     categoryFilter.innerHTML = `
-        <option value="all">All categories</option>
+        <option value="all">Όλες οι κατηγορίες</option>
     `;
 
     const categories = [
@@ -206,7 +206,7 @@ function renderEngolpia() {
     grid.innerHTML = "";
 
     resultsText.textContent =
-        `${filteredEngolpia.length} engolpia found`;
+        `Βρέθηκαν ${filteredEngolpia.length} εγκόλπια`;
 
     emptyState.classList.toggle(
         "hidden",
@@ -218,8 +218,8 @@ function renderEngolpia() {
         card.className = "engolpio-card";
 
         const statusText = item.available
-            ? "Available"
-            : "Already borrowed";
+            ? "Διαθέσιμο"
+            : "Ήδη δανεισμένο";
 
         const statusClass = item.available
             ? "status-available"
@@ -232,7 +232,7 @@ function renderEngolpia() {
 
             <div class="engolpio-content">
                 <p class="engolpio-number">
-                    Engolpio #${escapeHtml(item.id)}
+                    Εγκόλπιο #${escapeHtml(item.id)}
                 </p>
 
                 <h2 class="engolpio-title">
@@ -264,7 +264,7 @@ function renderEngolpia() {
                     data-id="${escapeHtml(item.id)}"
                     ${item.available ? "" : "disabled"}
                 >
-                    ${item.available ? "Borrow this engolpio" : "Unavailable"}
+                    ${item.available ? "Δανεισμός εγκολπίου" : "Μη διαθέσιμο"}
                 </button>
 
                 <button
@@ -300,7 +300,7 @@ function openBorrowDialog(id) {
     );
 
     if (!selectedItem || !selectedItem.available) {
-        showToast("This engolpio is not currently available.");
+        showToast("Αυτό το εγκόλπιο δεν είναι διαθέσιμο αυτή τη στιγμή.");
         renderEngolpia();
         return;
     }
@@ -352,7 +352,7 @@ async function submitBorrowing(event) {
 
     if (!name) {
         formMessage.textContent =
-            "Please enter your full name.";
+            "Παρακαλώ εισάγετε το ονοματεπώνυμό σας.";
         return;
     }
 
@@ -367,7 +367,7 @@ async function submitBorrowing(event) {
     );
 
     submitButton.disabled = true;
-    submitButton.textContent = "Saving...";
+    submitButton.textContent = "Αποθήκευση...";
 
     try {
         const formData = new URLSearchParams();
@@ -392,14 +392,14 @@ async function submitBorrowing(event) {
 
         if (!result.success) {
             throw new Error(
-                result.error || "Borrowing failed."
+                result.error || "Ο δανεισμός απέτυχε."
             );
         }
 
         borrowDialog.close();
 
         showToast(
-            "The engolpio was borrowed successfully."
+            "Το εγκόλπιο δανείστηκε επιτυχώς."
         );
 
         await loadEngolpia();
@@ -408,11 +408,11 @@ async function submitBorrowing(event) {
 
         formMessage.textContent =
             error.message ||
-            "The borrowing could not be saved.";
+            "Ο δανεισμός δεν ήταν δυνατό να αποθηκευτεί.";
     } finally {
         submitButton.disabled = false;
         submitButton.textContent =
-            "Confirm borrowing";
+            "Επιβεβαίωση δανεισμού";
     }
 }
 

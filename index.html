@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
 
@@ -8,7 +8,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Engolpia</title>
+    <title>Εγκόλπια</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,8 +19,8 @@
             <div class="logo">✝</div>
 
             <div>
-                <h1>Engolpia</h1>
-                <p>Choose an engolpio to borrow</p>
+                <h1>Εγκόλπια</h1>
+                <p>Επιλέξτε ένα εγκόλπιο για δανεισμό</p>
             </div>
         </div>
     </header>
@@ -33,18 +33,18 @@
                 <input
                     type="search"
                     id="searchInput"
-                    placeholder="Search by title or category"
+                    placeholder="Αναζήτηση με τίτλο ή κατηγορία"
                     autocomplete="off"
                 >
             </label>
 
             <select id="categoryFilter" aria-label="Filter by category">
-                <option value="all">All categories</option>
+                <option value="all">Όλες οι κατηγορίες</option>
             </select>
         </section>
 
         <section class="summary">
-            <p id="resultsText">Loading engolpia...</p>
+            <p id="resultsText">Φόρτωση εγκολπίων...</p>
         </section>
 
         <section
@@ -55,8 +55,8 @@
 
         <section id="emptyState" class="empty-state hidden">
             <div class="empty-icon">📭</div>
-            <h2>No engolpia found</h2>
-            <p>Try another title or category.</p>
+            <h2>Δεν βρέθηκαν εγκόλπια</h2>
+            <p>Δοκιμάστε άλλον τίτλο ή κατηγορία.</p>
         </section>
     </main>
 
@@ -66,14 +66,14 @@
                 type="button"
                 id="closeDialogButton"
                 class="close-button"
-                aria-label="Close"
+                aria-label="Κλείσιμο"
             >
                 ×
             </button>
 
             <div class="dialog-heading">
-                <p class="dialog-label">Borrowing</p>
-                <h2 id="dialogTitle">Engolpio</h2>
+                <p class="dialog-label">Δανεισμός</p>
+                <h2 id="dialogTitle">Εγκόλπιο</h2>
             </div>
 
             <input type="hidden" id="selectedEngolpioId">
@@ -107,7 +107,7 @@
             <p id="formMessage" class="form-message"></p>
 
             <button type="submit" class="primary-button">
-                Confirm borrowing
+                Επιβεβαίωση δανεισμού
             </button>
         </form>
     </dialog>
