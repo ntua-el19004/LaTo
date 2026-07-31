@@ -225,13 +225,35 @@ function renderEngolpia() {
             ? "status-available"
             : "status-borrowed";
 
+        const imageUrl = item.image
+            ? item.image.trim()
+            : "";
+
         card.innerHTML = `
-            <div class="engolpio-cover" aria-hidden="true">
-                <img
-            src="${item.image || 'images/default.jpg'}"
-            class="engolpio-image"
-            alt="${item.title}">
-                </div>
+            <div class="card-image">
+              ${
+                imageUrl
+                  ? `
+                    <img
+                      src="${imageUrl}"
+                      class="engolpio-image"
+                      alt=""
+                      onerror="
+                        this.style.display='none';
+                        this.nextElementSibling.style.display='flex';
+                      "
+                    >
+                    <div class="engolpio-placeholder" style="display:none;">
+                      &#10013;
+                    </div>
+                  `
+                  : `
+                    <div class="engolpio-placeholder">
+                      &#10013;
+                    </div>
+                  `
+              }
+            </div>
 
             <div class="engolpio-content">
                 <p class="engolpio-number">
