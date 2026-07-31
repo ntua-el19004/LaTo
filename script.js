@@ -104,6 +104,7 @@ async function loadEngolpia() {
                 category: String(item.category || "Other"),
                 available: normalizeBoolean(item.available),
                 totalCopies: Number(item.totalCopies || 0),
+                image: String(item.image || ""),
                 availableCopies: Array.isArray(item.availableCopies)
                     ? item.availableCopies.map(Number)
                     : []
@@ -225,34 +226,30 @@ function renderEngolpia() {
             ? "status-available"
             : "status-borrowed";
 
-        const imageUrl = item.image
-            ? item.image.trim()
-            : "";
+        const imageHtml = item.image
+            ? `
+                <img
+                  src="${item.image}"
+                  class="engolpio-image"
+                  alt="${item.title}"
+                  onerror="
+                    this.style.display='none';
+                    this.nextElementSibling.style.display='flex';
+                  "
+                >
+                <div class="engolpio-placeholder" style="display:none;">
+                  &#10013;
+                </div>
+              `
+            : `
+                <div class="engolpio-placeholder">
+                  &#10013;
+                </div>
+              `;
 
         card.innerHTML = `
             <div class="card-image">
-              ${
-                imageUrl
-                  ? `
-                    <img
-                      src="${imageUrl}"
-                      class="engolpio-image"
-                      alt=""
-                      onerror="
-                        this.style.display='none';
-                        this.nextElementSibling.style.display='flex';
-                      "
-                    >
-                    <div class="engolpio-placeholder" style="display:none;">
-                      &#10013;
-                    </div>
-                  `
-                  : `
-                    <div class="engolpio-placeholder">
-                      &#10013;
-                    </div>
-                  `
-              }
+              ${imageHtml}
             </div>
 
             <div class="engolpio-content">
