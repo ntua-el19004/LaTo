@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Engolpia</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <div class="logo">✝</div>
+
+            <div>
+                <h1>Engolpia</h1>
+                <p>Choose an engolpio to borrow</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="toolbar">
+            <label class="search-box">
+                <span class="search-icon">🔍</span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search by title or category"
+                    autocomplete="off"
+                >
+            </label>
+
+            <select id="categoryFilter" aria-label="Filter by category">
+                <option value="all">All categories</option>
+            </select>
+        </section>
+
+        <section class="summary">
+            <p id="resultsText">Loading engolpia...</p>
+        </section>
+
+        <section
+            id="engolpiaGrid"
+            class="engolpia-grid"
+            aria-live="polite"
+        ></section>
+
+        <section id="emptyState" class="empty-state hidden">
+            <div class="empty-icon">📭</div>
+            <h2>No engolpia found</h2>
+            <p>Try another title or category.</p>
+        </section>
+    </main>
+
+    <dialog id="borrowDialog" class="borrow-dialog">
+        <form id="borrowForm">
+            <button
+                type="button"
+                id="closeDialogButton"
+                class="close-button"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+            <div class="dialog-heading">
+                <p class="dialog-label">Borrowing</p>
+                <h2 id="dialogTitle">Engolpio</h2>
+            </div>
+
+            <input type="hidden" id="selectedEngolpioId">
+
+            <label class="form-field">
+                <span>Ονοματεπώνυμο</span>
+
+                <input
+                    type="text"
+                    id="borrowerName"
+                    required
+                    placeholder="π.χ. Ιωάννης Παπαδόπουλος"
+                    autocomplete="name"
+                >
+            </label>
+
+            <label class="form-field">
+                <span>Αριθμός εγκολπίου</span>
+
+                <input
+                    type="number"
+                    id="copyNumber"
+                    required
+                    min="1"
+                    step="1"
+                    placeholder="π.χ. 4"
+                >
+            </label>
+
+
+            <p id="formMessage" class="form-message"></p>
+
+            <button type="submit" class="primary-button">
+                Confirm borrowing
+            </button>
+        </form>
+    </dialog>
+
+    <dialog id="returnDialog" class="borrow-dialog">
+        <form id="returnForm">
+            <button
+                type="button"
+                id="closeReturnDialogButton"
+                class="close-button"
+                aria-label="Κλείσιμο"
+            >
+                &times;
+            </button>
+
+            <div class="dialog-heading">
+                <p class="dialog-label">Επιστροφή</p>
+                <h2 id="returnDialogTitle">Εγκόλπιο</h2>
+            </div>
+
+            <input
+                type="hidden"
+                id="returnEngolpioId"
+            >
+
+            <label class="form-field">
+                <span>Αριθμός εγκολπίου</span>
+
+                <input
+                    type="number"
+                    id="returnCopyNumber"
+                    required
+                    min="1"
+                    step="1"
+                    placeholder="π.χ. 4"
+                >
+            </label>
+
+            <p
+                id="returnFormMessage"
+                class="form-message"
+            ></p>
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Επιβεβαίωση επιστροφής
+            </button>
+        </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
